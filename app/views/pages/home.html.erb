@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header>
+  <%= render 'navbar' %>
+</header>
+<main class="container-lg my-4">
+  <h1>Pages#home</h1>
+  <p>Find me in app/views/pages/home.html.erb</p>
+</main>
+<div class="fixed-bottom">
+  <div class="position-absolute bottom-0 end-0 m-2 text-secondary" style="font-size: 24px;">
+    <span class="text-capitalize" style="margin-right: 8px; font-size: 20px;"></span>
+
+    <a class="nav-link d-inline me-1 play" href="javascript:conf.fill.track()" title="tocar">
+      <i class="bi bi-play-fill"></i>
+    </a>
+    <a class="nav-link d-inline me-1" href="javascript:conf.fill.next()" title="próximo hino">
+      <i class="bi bi-arrow-right-circle-fill"></i>
+    </a>
+  </div>
+</div>
