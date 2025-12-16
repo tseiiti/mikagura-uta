@@ -1,4 +1,17 @@
 class Uta
+  SEARCHES = [
+    "_", "kokonotsu,", "ttsu,", "ttsu", "tsu,",
+    "cha", "chi", "cho", "kka", "kki", "kko", "nya", "ppa", "ryō", "shi", "sho", "shō", "sse", "tsu",
+    "\\(a\\)", "\\(o\\)", "\\(e\\)", "\\(i\\)", "\\(u\\)", "\\(n\\)",
+    "do,", "de,", "ni,",
+    "ba", "bi", "bo", "bu", "da", "de", "do", "dō", "fu", "fū", "ga", "gi", "go", "gu", "ha",
+    "hi", "ho", "hō", "ji", "jo", "jū", "ka", "ke", "ki", "ko", "kō", "ku", "ma", "me", "mi",
+    "mo", "mu", "na", "ne", "nē", "ni", "no", "nō", "nu", "ra", "re", "ri", "ro", "rō", "ru",
+    "sa", "se", "so", "sō", "su", "ta", "te", "to", "tō", "wa", "wō", "xi", "xo", "ya", "yo",
+    "yō", "yu", "yū", "za", "zo", "zu",
+    "ō", "i", "o", "n", "e", "u", "a"
+  ]
+
   INSTRUMENTS = [
     "hyoshigi",
     "chanpon",
@@ -78,7 +91,7 @@ class Uta
       }, {
         lyric: "korewa konoyono hajimedashi __",
         halfs: [ 1, 3, 5, 7, 9, 11 ],
-        inverso: 1,
+        inverse: 1,
         stop: 13,
         hyoshigi: "   1   1   1",
         chanpon: " 1   1   1   1",
@@ -2785,4 +2798,8 @@ class Uta
     hymn_11: HYMN_11,
     hymn_12: HYMN_12
   }
+
+  def self.get(key)
+    HYMNS[key.to_sym]
+  end
 end

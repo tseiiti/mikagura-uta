@@ -1,8 +1,6 @@
 <%= render 'navbar' %>
 
-<main class="container-lg my-4">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-</main>
+<%= hymn_html(Uta.get(@config[:hymn_id])) %>
 
 <%= render 'fixed_bottom_buttons' %>
+<%# console %>
