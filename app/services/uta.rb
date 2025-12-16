@@ -1,0 +1,2788 @@
+class Uta
+  INSTRUMENTS = [
+    "hyoshigi",
+    "chanpon",
+    "surigane",
+    "taiko",
+    "kotsuzumi",
+    "fue",
+    "koto"
+  ]
+
+  HYMN_ST = {
+    title: "suwari zutome",
+    song: [
+      [ {
+        lyric: "ashiki o haro(o)te tasuke tamae",
+        halfs: [ 1, 3, 5, 7, 10, 13 ],
+        hyoshigi: "1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 22",
+        taiko: "1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "2  00  35  30 27",
+        koto: "4  44  32  33 45"
+      }, {
+        lyric: "tenri ō no mikoto _",
+        halfs: [ 1 ],
+        pause: true,
+        message: "21 vezes",
+        hyoshigi: "1   1   1   1",
+        chanpon: "  1   1   1   3",
+        surigane: "1 221 221 221 44",
+        taiko: "1   1     3 1",
+        kotsuzumi: "  123232",
+        fue: "3 0 2 6 7 2 0",
+        koto: "3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "choto hanashi kami no yu koto kiitekure",
+        halfs: [ 10, 12, 14 ],
+        hyoshigi: "1   1   1   1   1   1   2",
+        chanpon: "  1   1   1   1   1   1 2",
+        surigane: "1 221 221 221 221 221 223",
+        taiko: "1   1 2 1   1   1       1",
+        kotsuzumi: "    1332       4    12",
+        fue: "2     0 0 2 3   0 272 3 2",
+        koto: "4     4 4   3   3 454 3 4"
+      }, {
+        lyric: "ashiki no koto(o)wa iwandena",
+        halfs: [ 1, 3, 5, 7, 9, 11 ],
+        hyoshigi: "2   1   1   2",
+        chanpon: "2 1   1   1 2",
+        surigane: "3 221 221 223",
+        taiko: "1 2 1       1",
+        kotsuzumi: "  12   432",
+        fue: "72 0 3 2 3 20",
+        koto: " 4 4 3 4 3 44"
+      }, {
+        lyric: "kono yono ji(i)to tento okatadorite",
+        halfs: [ 1, 4, 6, 8, 10, 12, 14 ],
+        hyoshigi: "2   1   1   1   2",
+        chanpon: "2 1   1   1   1 2",
+        surigane: "3 221 221 221 223",
+        taiko: "1 2 1   1       1",
+        kotsuzumi: "12    12   432",
+        fue: "72 002 35 32 3 20",
+        koto: "54 44  32  4 3 44"
+      }, {
+        lyric: "fufu okoshiraekitarudena",
+        halfs: [ 2, 4, 6, 8, 10 ],
+        stop: 11,
+        hyoshigi: "2   1   1   1",
+        chanpon: "2 1   1   1",
+        surigane: "3 221 221 221",
+        taiko: "1 2 1       1",
+        kotsuzumi: "  12   432",
+        fue: "72 0 3 2 3 20",
+        koto: "54 4 3 4 3 44"
+      }, {
+        lyric: "korewa konoyono hajimedashi __",
+        halfs: [ 1, 3, 5, 7, 9, 11 ],
+        inverso: 1,
+        stop: 13,
+        hyoshigi: "   1   1   1",
+        chanpon: " 1   1   1   1",
+        surigane: " 221 221 221 22",
+        taiko: " 2 1   1   1",
+        kotsuzumi: " 12    12",
+        fue: "720 3 2 3 20",
+        koto: "544 3 4 3 44"
+      }, {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        pause: true,
+        message: "1 vez",
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "ashiki o haro(o)te tasuke sekikomu",
+        halfs: [ 1, 3, 5, 7, 10, 12, 14 ],
+        hyoshigi: "1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 22",
+        taiko: "1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "2  00  35  30 27",
+        koto: "4  44  32  33 45"
+      }, {
+        lyric: "ichiretsu sumashite kanrodai _",
+        halfs: [ 1, 3, 5, 7, 9, 12 ],
+        pause: true,
+        message: "3 vezes ( de 3 )",
+        hyoshigi: "1   1   1   1",
+        chanpon: "  1   1   1   3",
+        surigane: "1 221 221 221 44",
+        taiko: "    1   1 2 1",
+        kotsuzumi: " 43232",
+        fue: " 3 00 272 3 2",
+        koto: " 3 33 454 3 4"
+      } ]
+    ]
+  }
+
+  HYMN_00 = {
+    title: "yorozuyo",
+    song: [
+      [ {
+        lyric: "yorozu yo no sekai ichiretsu miharasedo",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mune no wakarita mono wa nai _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "sono hazu ya toite kikashita koto wa nai",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "shiranu ga muri dewa nai wai na _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kono tabi wa kami ga omote e arawarete",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "nanika isai o toki kikasu _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kono tokoro yamato no jiba(a) no kamigata to",
+        halfs: [ 6 ],
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yū(u)te ire domo moto shiranu _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kono moto o kuwashiku kii(i)ta koto naraba",
+        halfs: [ 6 ],
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ikana mono demo koishi naru _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kikitakuba tazune kuru nara yūte kikasu",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yorozu isai no moto naru o _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kami ga dete nanika isai o toku naraba",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "sekai ichiretsu isamu nari _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "ichiretsu ni hayaku tasuke o isogu kara",
+        hyoshigi: "1   1   1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221 221 221",
+        taiko: "1                             2 1",
+        kotsuzumi: "    12    12   43232      12",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "sekai no kokoro mo isame kake _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        message: "yoshi yoshi",
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_01 = {
+    title: "hito kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, shō(o)gatsu(u)",
+        halfs: [ 1 ],
+        hyoshigi: "  2 2   1   1",
+        chanpon: "  2 2 1   1",
+        surigane: "  3 3 221 221",
+        taiko: "  1       2 1",
+        kotsuzumi: "        12",
+        fue: "2 6 2 3 0 2 3",
+        koto: "4 6 4 3 3 4 3"
+      }, {
+        lyric: "koe no sazuke wa yare mezurashii",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "12   43232    12    12",
+        fue: "5 3 2 5 6 8 2 2 6 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "nii ni, ni(i)kkori(i)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    12",
+        fue: "567 0 2 6 7 2 3",
+        koto: "755 754 6 5 4 4 3"
+      }, {
+        lyric: "sazuke morotara yare tanomoshi ya",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "12   43232    12    12",
+        fue: "5 3 2 5 6 8 2 2 6 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "san ni, sanzai kokoro o sadame",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        fue: "567 0 2 6 7 2 2 6 2 3 2 6 0",
+        kotsuzumi: "   4    12       43232",
+        taiko: "  1                     2 1",
+        koto: "755 754 6 5 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "yo(o)ttsu, yo no naka(a)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    12",
+        fue: "567 0 2 6 7 2 3",
+        koto: "755 754 6 5 4 3"
+      } ], [ {
+        lyric: "itsutsu, ri o fuku(u)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    12",
+        fue: "5 3 2 5 6 8 2 3",
+        koto: "2 3 4 2 1 8 4 3"
+      } ], [ {
+        lyric: "mu(u)ttsu, mushō(o) ni dekemawasu",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanikani(i) tsukuri toru nara(a)",
+        hyoshigi: "  1   1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221 221",
+        fue: "567 0 2 6 7 2 3 5 3 2 5 6 8 2 3",
+        kotsuzumi: "   4    1232    12   43232",
+        taiko: "  1                         2 1",
+        koto: "755 754 6 5 4 3 2 3 4 2 1 8 4 3"
+      } ], [ {
+        lyric: "ya(a)ttsu, yamato wa hō(o)nen ya _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko made tsuite koi",
+        halfs: [ 3, 5, 7, 10 ],
+        hyoshigi: "1   1   1   1",
+        chanpon: "  1   1   1",
+        surigane: "1 221 221 221",
+        taiko: "1         2 1",
+        kotsuzumi: "12    432",
+        fue: "2  70  00 0 2",
+        koto: "4  55  55 5 4"
+      } ], [ {
+        lyric: "tō(o)do, torime ga sadamarita _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12    1232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_02 = {
+    title: "futa kudari me",
+    song: [
+      [ {
+        lyric: "ton ton(n) ton to shō(o)gatsu(u)",
+        hyoshigi: "1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221",
+        taiko: "1                     2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 3 0 2 3 5 3 2 5 6 8 2 3",
+        koto: "4 3 3 4 3 2 3 4 2 1 8 4 3"
+      }, {
+        lyric: "odori hajime wa yare omoshiroi",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "12   43232    12    12",
+        fue: "567 0 2 6 7 2 2 6 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na(a)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    1232",
+        fue: "567 0 2 6 7 2 3",
+        koto: "755 754 6 5 4 3"
+      }, {
+        lyric: "fushin kakareba yare nigiwashi ya",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "12   43232    12    12",
+        fue: "5 3 2 5 6 8 2 2 6 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "mi(i)ttsu, mi ni tsuku(u)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    12",
+        fue: "567 0 2 6 7 2 3",
+        koto: "755 754 6 5 4 3"
+      } ], [ {
+        lyric: "yo(o)ttsu, yo naori(i)",
+        hyoshigi: "  1   1   1   1",
+        chanpon: "1   1   1   1",
+        surigane: "221 221 221 221",
+        taiko: "  1         2 1",
+        kotsuzumi: "   4    12",
+        fue: "5 3 2 5 6 8 2 3",
+        koto: "755 754 1 8 4 3"
+      } ], [ {
+        lyric: "itsutsu, izure mo tsuki kuru naraba",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "   4    12    12    12",
+        fue: "567 0 2 6 7 2 2 6 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 6 4 3 4 6 6"
+      } ], [ {
+        lyric: "mu(u)ttsu, muhon no nē(e) o kirō",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanjū(u) o sukui agureba(a)",
+        hyoshigi: "  1   1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221 221",
+        taiko: "  1                         2 1",
+        kotsuzumi: "   4    1232    12   43232",
+        fue: "567 0 2 6 7 2 3 5 3 2 5 6 8 2 3",
+        koto: "755 754 6 5 4 3 2 3 4 2 1 8 4 3"
+      } ], [ {
+        lyric: "ya(a)ttsu, yamai no ne(e) o kirō _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ kokoro o sadame iyō nara(a)",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1   1   1",
+        chanpon: "  1   1   1   1   1   1",
+        surigane: "1 221 221 221 221 221 221",
+        taiko: "  1                   2 1",
+        kotsuzumi: "12    12    12   432",
+        fue: "2  70 0 2 5 3 2 5 6 8 2 3",
+        koto: "4  55  54 2 3 4 2 1 8 4 3"
+      } ], [ {
+        lyric: "tō(o)de, tokoro no osamari ya _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12    1232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_03 = {
+    title: "mi kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hi no moto shoyashiki no",
+        halfs: [ 1 ],
+        hyoshigi: "  2 2   1   1   1   1",
+        chanpon: "  2 2 1   1   1   1",
+        surigane: "  3 3 221 221 221 221",
+        taiko: "  1       2 1",
+        kotsuzumi: "      12   43232",
+        fue: "2 6 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tsutome no basho(o) wa yo no moto ya",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na(a) tsutome basho(o) wa(a)",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 3 5 3 2 5 6 8 2 3",
+        kotsuzumi: "      12   43232",
+        koto: "4 6 3 3 4 3 2 3 4 2 1 8 4 3"
+      }, {
+        lyric: "tare ni tanomi wa kakene domo",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mina sekai ga yoriō(o)te",
+        hyoshigi: "  2 2   1   1   1   1   1",
+        chanpon: "1 2 2 1   1   1   1   1",
+        surigane: "223 3 221 221 221 221 221",
+        taiko: "  1                   2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "deketachi kitaru ga kore fushigi",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yōyō(o) koko made tsuite kita",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "jitsu no tasuke wa kore kara ya",
+        message: "pausar",
+        pause: true,
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsumo waraware soshirarete",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mezurashi tasuke o suru hodo ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, muri na negai wa shite kurena",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hitosuji gokoro ni narite koi",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nandemo kore kara hitosuji ni",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami ni motarete yuki masuru",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yamu hodo tsura(a)i koto wa nai",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "washi mo kore kara hinokishin",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko made shinjin shita keredo",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "moto no kami towa shirananda",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do kono tabi arawareta",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12    43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "jitsu no kami niwa sō(o)inai _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_04 = {
+    title: "yo kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hito ga nanigoto iwō(o) tomo",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami ga miteiru ki o shizume",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, futari no kokoro o osame iyo",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "nanika no koto (o) mo arawareru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mina miteiyo soba na mono",
+        hyoshigi: "  2 2   1   1   1   1   1",
+        chanpon: "1 2 2 1   1   1   1   1",
+        surigane: "223 3 221 221 221 221 221",
+        taiko: "  1                   2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami no suru koto nasu koto o",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoru hiru don chan tsutome suru",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "soba mo yakamashi utatekaro",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsu mo tasuke ga seku kara ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku yō(o)ki ni narite koi",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, murakata hayaku ni tasuke tai",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "naredo kokoro ga wakaraide",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanika yorozu no tasuke ai",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mune no uchi yori shian seyo",
+        message: "pausar",
+        pause: true,
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yamai no su(u)kkiri ne wa nukeru",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro wa dandan xisami kuru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko wa kono yo no gokuraku ya",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "washi mo hayabaya mairi tai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi mune no uchi",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12    43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "sumikiri mashita ga arigatai _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_05 = {
+    title: "itsu kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hiroi sekai no uchi nareba",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tasukeru tokoro ga mama arō(o)",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na tasuke wa kono tokoro",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "obiya hō(o)so no yurushi dasu",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mizu to kami to wa onaji koto",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro no yogore o araikiru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoku no nai mono nakeredomo",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami no mae niwa yoku wa nai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsumade shinjin shita totemo",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yō(o)ki zukume de aru hodo ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, mugoi kokoro o uchiwasure",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yasashiki kokoro ni nari te koi",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nandemo nangi wa sasanu zoe",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tasuke ichijo no kono tokoro",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yamato bakari ya nai hodo ni",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kuniguni made e mo tasuke yuku",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko wa kono yo no moto no jiba",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mezurashi tokoro ga arawareta",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   2",
+        chanpon: "1   1   1   1   1   1 2",
+        surigane: "221 221 221 221 221 223",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "dō(o)demo shinjin suru nara ba",
+        hyoshigi: "2   1   1   1   1   1   1",
+        chanpon: "2 1   1   1   1   1   1",
+        surigane: "3 221 221 221 221 221 221",
+        taiko: "1                     2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "7 0 2 3 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kō(o) o musubo ya nai kaina _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_06 = {
+    title: "mutsu kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hito no kokoro to yū(u) mono wa",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "utagai buka(a)i mono naru zo",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na tasuke o suru kara ni",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ikanaru koto(o) mo misadameru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mina sekai no mune no uchi",
+        hyoshigi: "  2 2   1   1   1   1   1",
+        chanpon: "1 2 2 1   1   1   1   1",
+        surigane: "223 3 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kagami no gotoku ni utsuru nari",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yōkoso tsutome ni tsuite kita",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kore ga tasuke no moto date ya",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsumo kagura ya teodori ya",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "sue dewa mezurashi tasuke suru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, mushō(o) yatara ni negai deru",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "uketoru suji(i) mo sen suji ya",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanbo shinjin shita totemo",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro e chigai wa naran zoe",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yappari shinjin senya naran",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro e chigai wa denaoshi ya",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko made shinjin shite karawa",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hitotsu no kō(o) o mo minya naran",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi miemashita",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ōgi no ukagai kore fushigi _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_07 = {
+    title: "nana kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hitokoto hanashi wa hinokishin",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "nioi bakari o kakete oku",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fukai kokoro ga aru nareba",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tare mo tomeru de nai hodo ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mina sekai no kokoro niwa",
+        hyoshigi: "  2 2   1   1   1   1   1",
+        chanpon: "1 2 2 1   1   1   1   1",
+        surigane: "223 3 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "denji no ira(a)nu mono wa nai",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoki ji ga ara(a)ba ichiretsu ni",
+        halfs: [ 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tare mo hoshii de arō(o)gana",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, izure no kata(a) mo onaji koto",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "washi mo ano ji o motome tai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, muri ni dō(o)se to iwan dena",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "soko wa meimei no mune shidai",
+        halfs: [ 6 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nandemo denji ga hoshi(i) kara",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "atae wa nanihodo iru totemo",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yashiki wa kami(i) no denji yade",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "maitaru tane(e) wa mina haeru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko wa kono yo no denji nara",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "washi mo shi(i)kkari tane o mako",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi ichiretsu ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yōkoso tane(e) o maki ni kita",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      }, {
+        lyric: "tane o maitaru sono kata wa",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "koe o okazu ni tsukuri tori _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_08 = {
+    title: "ya kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hiroi sekai ya kuni naka ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ishi mo tachiki mo nai kai na",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na fushin o suru naredo",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tare ni tanomi wa kaken de na",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mina dandan to sekai kara",
+        hyoshigi: "  2 2   1   1   2 2   1   1",
+        chanpon: "1 2 2 1   1   1 2 2 1   1",
+        surigane: "223 3 221 221 223 3 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "    12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yorikita koto nara dekete kuru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoku no kokoro o uchiwasure",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "toku to kokoro o sadame kake",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsumade miawase itaru tomo",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "uchi kara suru no ya nai hodo ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, mushō(o) yatara ni sekikomu na",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mune no uchi yori shian seyo",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanika kokoro ga sunda nara",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku fushin ni tori kakare",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yama no naka eto irikonde",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ishi mo tachiki mo mite oita",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ kono ki kirō(o) ka ano ishi to",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "omoedo kami(i) no mune shidai",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi ichiretsu ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "sumikiri mashita ga mune no uchi _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_09 = {
+    title: "kokono kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hiroi sekai o uchi mawari",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "issen nisen de tasuke yuku",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fujū(u) naki yo ni shite yarō(o)",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami no kokoro ni motare tsuke",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mire ba sekai no kokoro niwa",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yoku ga majirite aru hodo ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoku ga aru nara yamete kure",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami no uketori deken kara",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, izure no kata(a) mo onaji koto",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "shian sadamete tsuite koi",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, muri ni deyō(o) to yū(u)de nai",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro sadame no tsuku made wa",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nakanaka kono tabi ichiretsu ni",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "shikkari shian xo senya naran",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yama no naka demo achi kochi to",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tenri ō(o)(o) no tsutome suru",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ koko de tsutome o shite iredo",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mune no wakarita mono wa nai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "totemo kami na o yobi daseba",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku komoto e tazune deyo _",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_10 = {
+    title: "to kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hito no kokoro to yū(u) mono wa",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "choto ni wakaran mono naru zo",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushiga na tasuke o shite iredo",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "araware deru no ga ima hajime",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mizu no naka naru kono dorō(o)",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku idashite morai tai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoku ni kiri nai doro mizu ya",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro sumikire gokuraku ya",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsuitsu made(e) mo kono koto wa",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hanashi no tane(e) ni naru hodo ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, mugoi kotoba o dashi taru mo",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku tasuke o isogu kara",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nangi suru no mo kokoro kara",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "wagami urami de aru hodo ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yamai wa tsura(a)i mono naredo",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "moto o shiritaru mono wa nai",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ kono tabi made(e) wa ichiretsu ni",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yamai no moto(o) wa shirenanda",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi arawareta",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "yamai no moto(o) wa kokoro kara _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_11 = {
+    title: "jūichi kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, hi no moto shoyashiki no",
+        halfs: [ 1 ],
+        hyoshigi: "  2 2   1   1   1   1",
+        chanpon: "  2 2 1   1   1   1",
+        surigane: "  3 3 221 221 221 221",
+        taiko: "  1               2 1",
+        kotsuzumi: "      12   43232",
+        fue: "2 6 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kami no yakata no jiba sadame",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fū(u)fu sorō(o)te hinokishin",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kore ga daiichi monodane ya",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu, mire ba sekai ga dandan to",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mo(o)kko ninō(o)te hinokishin",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yoku o wasurete hinokishin",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kore ga daiichi koe to naru",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, itsuitsu made(e) mo tsuchi mochi ya",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   2",
+        chanpon: "1   1   1   1   1   1   1 2",
+        surigane: "221 221 221 221 221 221 223",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mada aru nara(a)ba washi mo yuko",
+        hyoshigi: "2   1   1   1   1   1   1",
+        chanpon: "2 1   1   1   1   1   1",
+        surigane: "3 221 221 221 221 221 221",
+        taiko: "1                     2 1",
+        kotsuzumi: "   432    12   43232",
+        fue: "7 0 0 0 2 6 7 2 2 3 2 6 0",
+        koto: "5 5 5 5 4 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, muri ni tomeru ya nai hodo ni",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kokoro aru nara tare narito",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanika mezurashi tsuchi mochi ya",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "kore ga kishin to naru naraba",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yashiki no tsuchi(i) o hori torite",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tokoro kae(e)ru bakari yade",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ kono tabi made(e) wa ichiretsu ni",
+        halfs: [ 3 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "mune ga wakaran zannen na",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kotoshi wa koe okazu",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "jūbun mono(o) o tsukuri tori",
+        hyoshigi: "  1   1   1   1   1   2",
+        chanpon: "1   1   1   1   1   1 2",
+        surigane: "221 221 221 221 221 223",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      }, {
+        lyric: "yare tanomoshi(i) ya arigata ya _",
+        hyoshigi: "2   1   1   1   1   1   1",
+        chanpon: "2 1   1   1   1   1   1   1",
+        surigane: "3 221 221 221 221 221 221 22",
+        taiko: "1                     2 1",
+        kotsuzumi: "   432    12   43232",
+        fue: "7 0 0 0 2 6 7 2 2 3 2 6 0",
+        koto: "5 5 5 5 4 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMN_12 = {
+    title: "jūni kudari me",
+    song: [
+      [ {
+        lyric: "hitotsu, ichi ni daiku no ukagai ni",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "    1   1   1   1   1   1",
+        surigane: "  1 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "nanika no koto(o) mo makase oku",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "futatsu, fushigi na fushin xo suru naraba",
+        halfs: [ 1, 4 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "ukagai tate(e)te ii tsukeyo",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "mittsu , mina sekai kara dandan to",
+        hyoshigi: "  2 2   1   1   2 2   1   1",
+        chanpon: "1 2 2 1   1   1 2 2 1   1",
+        surigane: "223 3 221 221 223 3 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 2 5 6 8 2 0 2 3 2 6 0",
+        koto: "4 6 3 4 2 1 8 4 4 4 3 4 6 6"
+      }, {
+        lyric: "kitaru daiku ni nioi kake",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yottsu, yo(o)ki tō(o)ryōga aru naraba",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku komoto e yosete oke",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "itsutsu, izure tō(o)ryō(o) yo nin xiru",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "hayaku ukagai tatete miyo",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "muttsu, muri ni koi towa iwan dena",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "izure dandan tsuki kuru de",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "nanatsu, nanika mezurashi kono fushin",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "shikaketa koto nara kiri wa nai",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "yattsu, yama no naka eto yuku naraba",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "araki tō(o)ryō(o) tsurete yuke",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "kokonotsu, _ kore wa kozaiku tō(o)ryō(o) ya",
+        hyoshigi: "  1   1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 221",
+        taiko: "  1                     2 1",
+        kotsuzumi: "      12    12   43232",
+        fue: "2 6 3 0 2 5 6 8 2 2 3 2 6 0",
+        koto: "4 6 3 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "tatemae tō(o)ryō(o) kore kanna",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "tō(o)do, kono tabi ichiretsu ni",
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221",
+        taiko: "  1                 2 1",
+        kotsuzumi: "  12    12   43232",
+        fue: "5 3 2 5 6 8 2 2 3 2 6 0",
+        koto: "2 3 4 2 1 8 4 4 3 4 6 6"
+      }, {
+        lyric: "daiku no nin(n) mo soroi kita _",
+        halfs: [ 1 ],
+        hyoshigi: "  1   1   1   1   1   1",
+        chanpon: "1   1   1   1   1   1   1",
+        surigane: "221 221 221 221 221 221 22",
+        taiko: "  1                 2 1",
+        kotsuzumi: "   4    12   43232",
+        fue: "567 0 2 6 7 2 2 3 2 6 0",
+        koto: "755 754 6 5 4 4 3 4 6 6"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto _",
+        halfs: [ 3 ],
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1   1",
+        surigane: "1 221 221 221 221 22",
+        taiko: "1   1   1       1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ], [ {
+        lyric: "namu tenri ō no mikoto",
+        halfs: [ 3 ],
+        stop: 9,
+        hyoshigi: "1   1   1   1   1",
+        chanpon: "  1   1   1   1",
+        surigane: "1 221 221 221 221",
+        taiko: "1   1   1     2 1",
+        kotsuzumi: "  12   4    12",
+        fue: "7 2 3 0 2 6 7 2 0",
+        koto: "5 4 3 3 4 6 5 4 4"
+      } ]
+    ]
+  }
+
+  HYMNS = {
+    hymn_st: HYMN_ST,
+    hymn_00: HYMN_00,
+    hymn_01: HYMN_01,
+    hymn_02: HYMN_02,
+    hymn_03: HYMN_03,
+    hymn_04: HYMN_04,
+    hymn_05: HYMN_05,
+    hymn_06: HYMN_06,
+    hymn_07: HYMN_07,
+    hymn_08: HYMN_08,
+    hymn_09: HYMN_09,
+    hymn_10: HYMN_10,
+    hymn_11: HYMN_11,
+    hymn_12: HYMN_12
+  }
+end
