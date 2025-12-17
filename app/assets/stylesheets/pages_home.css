@@ -92,12 +92,12 @@ h1 {
   visibility: visible;
 }
 
-.fim .part_text:after {
+/* .stop .part_text:after {
   width: 0;
 }
 .syllable:last-child .part_2 .part_text:after {
   width: 0;
-}
+} */
 
 /* Ícone */
 .icone {
@@ -214,13 +214,13 @@ progress::-webkit-progress-bar { background: #eee; }
 progress::-moz-progress-bar { background: #888; }
 progress::-webkit-progress-value { background: #888; }
 
-.syllable:last-child .part_2 progress {
+/* .syllable:last-child .part_2 progress {
   width: 0;
 }
 
-.fim progress {
+.stop progress {
   width: 0;
-}
+} */
 
 .first-beat {
   margin-left: calc(var(--size) * 1.5);

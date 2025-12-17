@@ -1,112 +1,134 @@
 module PagesHelper
   def hymn_html(hymn, &block)
-    song = hymn[:song]
+    paragraphs = hymn[:paragraphs]
     @first = true
 
     tag.main data: { controller: "uta", uta_id: 1 }, class: "container-lg my-4" do
-      content = tag.h1 hymn[:title]
-      song.each_with_index do |paragraph, i|
-        content += paragraph_html(paragraph, i)
+      html = tag.h1 hymn[:title]
+      paragraphs.each_with_index do |paragraph, i|
+        html += paragraph(paragraph, i, hymn[:size])
       end
-      content.html_safe
+      html.html_safe
     end
   end
 
-  def paragraph_html(paragraph, i)
+  def paragraph(paragraph, i, size)
     tag.div class: "paragraph paragraph_#{ i }" do
-      content = ""
+      html = ""
       paragraph.each_with_index do |line, j|
-        content += line_html(line, j, i)
+        html += line(line, j, i)
+        if line[:message]
+          html += tag.div class: "line", style: "margin-left: calc(var(--size) * 2.3)" do
+            tag.div class: "border-bottom mb-4 px-2 message", style: "width: calc(var(--size) * #{ size })" do
+              tag.p line[:message], class: "text-end fst-italic fw-light m-1"
+            end
+          end
+        end
       end
-      content.html_safe
+      html.html_safe
     end
   end
 
-  def line_html(line, j, i)
-    lyric = (line[:lyric] || "").gsub(/\s+/, "")
+  def line(line, j, i)
+    phrase = (line[:phrase] || "").gsub(/\s+/, "")
     tag.div class: "line line_#{ j } #{ 'pause' if line[:pause] }" do
-      content = tag.div class: "syllable d-none d-md-block" do
-        clas = "beat first-beat #{ @first ? 'd-none' : '' }"
-        data = { paragraph: i, line: j, syllable: -1, part: 1 }
-        content = tag.progress class: clas, data: data, value: 0, max: 5
-
-        if @first
-          content += first_span_html(j, i)
-          @first = line[:pause]
-        end
-
-        content.html_safe
-      end
+      html = first_syllable(i, j, line)
 
       i1 = 0
       i2 = 0
-      while lyric.size > 0
-        lyric, text = syllable_text(lyric)
+      while phrase.size > 0
+        phrase, text = syllable_text(phrase)
         return if text.blank?
 
         stop = line[:stop] == i1
-        classes = [
+        attrs = [
           [
             "part_#{ line[:inverse] ? '2' : '1' } #{ 'stop' if stop }".strip,
             stop ? nil : "beat beat_#{ i2 + 1 }",
             { paragraph: i, line: j, syllable: i2 / 2, part: 1 }
           ], [
             "part_#{ line[:inverse] ? '1' : '2' } #{ 'd-none' if stop }".strip,
-            "beat beat_#{ i2 + 1 }",
+            "beat beat_#{ i2 + 2 }", # remover beat da última parte da ultima silaba!!!
             { paragraph: i, line: j, syllable: i2 / 2, part: 2 }
           ]
         ]
 
-        content += tag.div class: "syllable syllable_#{ i2 / 2 }" do
-          content = syllable_part_html(text, classes[0])
+        html += tag.div class: "syllable syllable_#{ i2 / 2 }" do
+          html = syllable_part(text, attrs[0], narimono(line, i2))
           if line[:halfs]&.include? i1 + 1
-            lyric, text = syllable_text(lyric)
-            content += syllable_part_html(text, classes[1])
+            phrase, text = syllable_text(phrase)
+            html += syllable_part(text, attrs[1], narimono(line, i2 + 1))
             i1 += 1
           else
-            content += syllable_part_html("", classes[1])
+            html += syllable_part("", attrs[1], narimono(line, i2 + 1))
           end
           i1 += 1
           i2 += 2
-          content.html_safe
+          html.html_safe
         end
-
-        content.html_safe
       end
-
-      content.html_safe
+      html.html_safe
     end
   end
 
-  def syllable_part_html(text, classes)
-    text = "" if text == "_"
-    text = "xi" if text == "i"
-    text = "xo" if text == "o"
-    tag.span class: "part #{ classes[0] }" do
-      content  = tag.progress class: classes[1], data: classes[2], value: 0, max: 5
-      content += tag.div text, class: "part_text"
+  def narimono(line, index)
+    html = ""
+    Uta::INSTRUMENTS.each do |k|
+      if line[k.to_sym]
+        char = line[k.to_sym][index]&.strip()
+        aux = "#{ 'stretch' if k == 'kotsuzumi' } #{ k }"
+        aux = "#{ aux } #{ k }_#{ char }" if char.present?
+        html += tag.div class: "icone d-none #{ aux }"
+      end
+    end
+    html.html_safe
+  end
+
+  def syllable_part(text, attrs, narimono)
+    text = ""  if text == "_"
+    text = "i" if text == "xi"
+    text = "o" if text == "xo"
+    tag.span class: "part #{ attrs[0] }" do
+      html  = tag.progress class: attrs[1], data: attrs[2], value: 0, max: 5
+      html += tag.div text, class: "part_text"
+      html += narimono
     end
   end
 
-  def first_span_html(j, i)
-    tag.span class: "first-span paragraph_#{ i } line_#{ j }" do
-      content  = tag.span "."
-      content += tag.span "."
-      content += tag.span "."
-      content.html_safe
-    end
-  end
-
-  def syllable_text(lyric)
+  def syllable_text(phrase)
     text = nil
     Uta::SEARCHES.each do |s|
-      r = Regexp.new("^#{ s }")
-      if r.match? lyric
+      r = Regexp.new("^#{ Regexp.escape(s) }")
+      if r.match? phrase
         text = s
-        lyric = lyric.gsub(r, "")
+        phrase = phrase.gsub(r, "")
         break
       end
     end
-    [ lyric, text ]
+    [ phrase, text ]
+  end
+
+  def first_syllable(i, j, line)
+    tag.div class: "syllable d-none d-md-block" do
+      clas = "beat first-beat #{ @first ? 'd-none' : '' }"
+      data = { paragraph: i, line: j, syllable: -1, part: 1 }
+      html = tag.progress class: clas, data: data, value: 0, max: 5
+
+      if @first
+        html += first_span(j, i)
+        @first = line[:pause]
+      end
+
+      html.html_safe
+    end
+  end
+
+  def first_span(j, i)
+    tag.span class: "first-span paragraph_#{ i } line_#{ j }" do
+      html  = tag.span "."
+      html += tag.span "."
+      html += tag.span "."
+      html.html_safe
+    end
   end
 end
