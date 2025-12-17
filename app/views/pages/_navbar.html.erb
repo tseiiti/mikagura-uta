@@ -2,12 +2,8 @@
   <nav class="navbar navbar-expand-md p-1" style="background-color: #69318e;" data-bs-theme="dark">
     <div class="container-lg">
       <a class="navbar-brand p-0" href="#"><strong></strong>Mikagura Uta</a>
-      <button class="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbar_content" 
-          aria-controls="navbar_content" 
-          style="padding: 2px 6px;">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_content" 
+          aria-controls="navbar_content" style="padding: 2px 6px;">
         <span class="navbar-toggler-icon" style="height: 24px; width: 24px;"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar_content">
@@ -19,7 +15,7 @@
             <div class="dropdown-menu">
               <ul class="list-group list-group-flush px-1 text-nowrap text-capitalize menu-hymn">
                 <% Uta::HYMNS.each do |k, e| %>
-                  <a class="list-group-item list-group-item-action" href="javascript:conf.set_hymn('<%= k %>')">
+                  <a class="list-group-item list-group-item-action<%= ' active' if @hymn == e %>" href="javascript:conf.set_hymn('<%= k %>')">
                     <%= e[:title] %>
                   </a>
                 <% end %>
@@ -55,19 +51,23 @@
             </a>
             <ul class="dropdown-menu px-3 px-md-2">
               <li class="nav-item">
-                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.tamanho(conf.get('tamanho') - 1)" title="reduzir o tamanho das letras">
+                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.tamanho(conf.get('tamanho') - 1)" 
+                    title="reduzir o tamanho das letras">
                   <i class="bi bi-zoom-out"></i>
                 </a>
-                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.tamanho(conf.get('tamanho') + 1)" title="aumentar o tamanho das letras">
+                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.tamanho(conf.get('tamanho') + 1)" 
+                    title="aumentar o tamanho das letras">
                   <i class="bi bi-zoom-in"></i>
                 </a>
                 <span class="d-inline-block px-3 py-2 px-md-2 py-md-1 text-secondary tamanho">16px</span>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.espaco(conf.get('espaco') - 0.05)" title="diminuir espaço entre notas">
+                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.espaco(conf.get('espaco') - 0.05)" 
+                    title="diminuir espaço entre notas">
                   <i class="bi bi-arrows-collapse-vertical"></i>
                 </a>
-                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.espaco(conf.get('espaco') + 0.05)" title="aumentar espaço entre notas">
+                <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" href="javascript:conf.espaco(conf.get('espaco') + 0.05)" 
+                    title="aumentar espaço entre notas">
                   <i class="bi bi-arrows-expand-vertical"></i>
                 </a>
                 <span class="d-inline-block px-3 py-2 px-md-2 py-md-1 text-secondary espaco">1.4x</span>
@@ -76,25 +76,29 @@
                 <div class="row py-1" title="tempo em batidas por minuto">
                   <label for="bpm" class="col-4 col-sm-3 col-md-6 pe-0">bpm</label>
                   <div class="col-4 col-sm-3 col-md-6 ps-0">
-                    <input class="form-control py-0 bpm" type="number" value="60" id="bpm" onchange="conf.bpm(this.value)">
+                    <input class="form-control py-0 bpm" type="number" value="60" id="bpm" 
+                        onchange="conf.bpm(this.value)">
                   </div>
                 </div>
                 <div class="row py-1" title="quantidade de execução da 1a parte do suwari zutome">
                   <label for="qs_0" class="col-4 col-sm-3 col-md-6 pe-0">parte 1</label>
                   <div class="col-4 col-sm-3 col-md-6 ps-0">
-                    <input class="form-control py-0 qs_0" type="number" value="21" id="qs_0" onchange="conf.quant(0, this.value)">
+                    <input class="form-control py-0 qs_0" type="number" value="21" id="qs_0" 
+                        onchange="conf.quant(0, this.value)">
                   </div>
                 </div>
                 <div class="row py-1" title="quantidade de execução da 3a parte do suwari zutome">
                   <label for="qs_1" class="col-4 col-sm-3 col-md-6 pe-0">parte 3</label>
                   <div class="col-4 col-sm-3 col-md-6 ps-0">
-                    <input class="form-control py-0 qs_1" type="number" value="3" id="qs_1" onchange="conf.quant(1, this.value)">
+                    <input class="form-control py-0 qs_1" type="number" value="3" id="qs_1" 
+                        onchange="conf.quant(1, this.value)">
                   </div>
                 </div>
                 <div class="row py-1" title="quantidade de paradas a cada conjuto de execução da 3a parte do suwari zutome">
                   <label for="qs_2" class="col-4 col-sm-3 col-md-6 pe-0">vezes</label>
                   <div class="col-4 col-sm-3 col-md-6 ps-0">
-                    <input class="form-control py-0 qs_2" type="number" value="3" id="qs_2" onchange="conf.quant(2, this.value)">
+                    <input class="form-control py-0 qs_2" type="number" value="3" id="qs_2" 
+                        onchange="conf.quant(2, this.value)">
                   </div>
                 </div>
               </li>

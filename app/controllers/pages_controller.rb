@@ -9,6 +9,8 @@ class PagesController < ApplicationController
     @config[:animation] = aux[:animation].to_s != "false"
     @config[:visible_instruments] = aux[:visible_instruments] || []
     @config[:suwari_configuration] = aux[:suwari_configuration] || [ 21, 3, 3 ]
+
+    @hymn = Uta.get(@config[:hymn_id])
   end
 
   private

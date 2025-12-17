@@ -7,5 +7,5 @@ Rails.application.routes.draw do
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  get "pages/:id" => "pages#index"
+  get "pages/:id" => "pages#home"
 end
