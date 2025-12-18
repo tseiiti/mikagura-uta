@@ -3,9 +3,10 @@
     Hinos
   </a>
   <div class="dropdown-menu">
-    <ul class="list-group list-group-flush px-1 text-nowrap text-capitalize menu-hymns">
+    <ul class="list-group list-group-flush px-1 text-nowrap text-capitalize">
       <% Uta::HYMNS.each do |k, e| %>
-        <a class="list-group-item list-group-item-action<%= ' active' if @hymn == e %>" href="<%= hymn_path(k) %>">
+        <a class="list-group-item list-group-item-action menu-hymns" 
+            data-action="click->hymn#set_hymn" name="hymn_id" data-val="<%= k %>">
           <%= e[:title] %>
         </a>
       <% end %>

@@ -2,22 +2,24 @@
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Instrumentos
   </a>
-  <div class="dropdown-menu px-3 text-capitalize menu-instruments">
+  <div class="dropdown-menu px-3 text-capitalize">
     <% Uta::INSTRUMENTS.each do |k, e| %>
       <div class="form-check mx-1 my-1">
-        <input type="checkbox" class="form-check-input instrumento" name="<%= k %>" 
-          id="check_<%= k %>" onchange="conf.instrument(this)">
+        <input type="checkbox" class="form-check-input menu-instrument" id="check_<%= k %>" 
+            data-action="click->hymn#set_instrument" name="<%= k %>" data-val="<%= k %>">
         <label class="form-check-label" for="check_<%= k %>"><%= k %></label>
       </div>
     <% end %>
     <hr class="my-2 mx-0">
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="todos" id="ch_todos" onchange="conf.instrument_all()">
-      <label class="form-check-label" for="ch_todos">todos</label>
+      <input class="form-check-input" type="radio" name="all" id="ch_all" 
+          data-action="click->hymn#set_instrument_all">
+      <label class="form-check-label" for="ch_all">todos</label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="todos" id="ch_nenhum" onchange="conf.instrument_all()" checked>
-      <label class="form-check-label" for="ch_nenhum">nenhum</label>
+      <input class="form-check-input" type="radio" name="all" id="ch_none" 
+          data-action="click->hymn#set_instrument_all">
+      <label class="form-check-label" for="ch_none">nenhum</label>
     </div>
   </div>
 </li>
