@@ -1,0 +1,14 @@
+<li class="nav-item dropdown my-2 my-md-0">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Hinos
+  </a>
+  <div class="dropdown-menu">
+    <ul class="list-group list-group-flush px-1 text-nowrap text-capitalize menu-hymns">
+      <% Uta::HYMNS.each do |k, e| %>
+        <a class="list-group-item list-group-item-action<%= ' active' if @hymn == e %>" href="<%= hymn_path(k) %>">
+          <%= e[:title] %>
+        </a>
+      <% end %>
+    </ul>
+  </div>
+</li>

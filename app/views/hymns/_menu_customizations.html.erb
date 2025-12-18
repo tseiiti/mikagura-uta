@@ -1,0 +1,66 @@
+<li class="nav-item dropdown" data-controller="hymn">
+  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Ajustes
+  </a>
+  <ul class="dropdown-menu px-3 px-md-2">
+    <li class="nav-item">
+      <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" title="reduzir o tamanho das letras" 
+          data-action="click->hymn#shift" name="font_size" data-val="-1">
+        <i class="bi bi-zoom-out"></i>
+      </a>
+      <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" title="aumentar o tamanho das letras" 
+          data-action="click->hymn#shift" name="font_size" data-val="1">
+        <i class="bi bi-zoom-in"></i>
+      </a>
+      <span class="d-inline-block px-3 py-2 px-md-2 py-md-1 text-secondary"><span class="font_size"></span>px</span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" title="diminuir espaço entre notas" 
+          data-action="click->hymn#shift" name="space_width" data-val="-0.05">
+        <i class="bi bi-arrows-collapse-vertical"></i>
+      </a>
+      <a class="nav-link d-inline-block px-3 py-2 px-md-2 py-md-1" title="aumentar espaço entre notas" 
+          data-action="click->hymn#shift" name="space_width" data-val="0.05">
+        <i class="bi bi-arrows-expand-vertical"></i>
+      </a>
+      <span class="d-inline-block px-3 py-2 px-md-2 py-md-1 text-secondary"><span class="space_width"></span>x</span>
+    </li>
+    <li class="nav-item">
+      <div class="row py-1" title="tempo em batidas por minuto">
+        <label for="bpm_time" class="col-4 col-sm-3 col-md-6 pe-0">bpm</label>
+        <div class="col-4 col-sm-3 col-md-6 ps-0">
+          <input class="form-control py-0 bpm_time" type="number" id="bpm_time" 
+              data-action="change->hymn#change" name="bpm_time">
+        </div>
+      </div>
+      <div class="row py-1" title="quantidade de execução da 1a parte do suwari zutome">
+        <label for="suwari_0" class="col-4 col-sm-3 col-md-6 pe-0">parte 1</label>
+        <div class="col-4 col-sm-3 col-md-6 ps-0">
+          <input class="form-control py-0 suwari_0" type="number" id="suwari_0" 
+              data-action="change->hymn#change" name="suwari_0">
+        </div>
+      </div>
+      <div class="row py-1" title="quantidade de execução da 3a parte do suwari zutome">
+        <label for="suwari_1" class="col-4 col-sm-3 col-md-6 pe-0">parte 3</label>
+        <div class="col-4 col-sm-3 col-md-6 ps-0">
+          <input class="form-control py-0 suwari_1" type="number" id="suwari_1" 
+              data-action="change->hymn#change" name="suwari_1">
+        </div>
+      </div>
+      <div class="row py-1" title="quantidade de paradas a cada conjuto de execução da 3a parte do suwari zutome">
+        <label for="suwari_2" class="col-4 col-sm-3 col-md-6 pe-0">vezes</label>
+        <div class="col-4 col-sm-3 col-md-6 ps-0">
+          <input class="form-control py-0 suwari_2" type="number" id="suwari_2" 
+              data-action="change->hymn#change" name="suwari_2">
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div class="form-check mx-1 my-1">
+        <input type="checkbox" class="form-check-input animation" name="animation" id="animation" 
+            data-action="change->hymn#toogle" name="animation">
+        <label class="form-check-label" for="animation">animação</label>
+      </div>
+    </li>
+  </ul>
+</li>
