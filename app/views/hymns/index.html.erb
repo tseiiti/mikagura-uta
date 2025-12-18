@@ -3,7 +3,25 @@
 
 <%# console %>
 <script>
-
 const qs  = (arg) => { return document.querySelector(arg); }
+
 const qsa = (arg) => { return document.querySelectorAll(arg); }
+
+const set_cookie = (key, val) => {
+  let d = new Date()
+  d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000)
+  document.cookie = `${key}=${val};expires=${d.toUTCString()};path=/;samesite=lax;`
+}
+
+const get_cookie = (key) => {
+  key = key + "="
+  let val = ""
+  document.cookie.split("; ").forEach(e => {
+    if (e.indexOf(key) === 0) {
+      val = e.substring(key.length, e.length)
+      return
+    }
+  })
+  return val
+}
 </script>
