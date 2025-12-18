@@ -213,10 +213,10 @@ export default class extends Controller {
 
   start() {
     if (prm.qs_3 == 1) {
-      this.play_suwari_aux_1()
-      this.play_suwari_aux_2()
+      this.play_suwari_aux_1();
+      this.play_suwari_aux_2();
     }
-    // this.track_icon(1)
+    this.track_icon(1);
     // let e = this.tempos[prm.cur]
     // let es = qsa(`.first-span.paragraph_${e.dataset.paragraph}.line_${e.dataset.line} span`)
     // es[0].scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" })
@@ -238,17 +238,17 @@ export default class extends Controller {
 
   play_suwari_aux_1() {
     for (let i = prm.ini; i < prm.cur; i++) {
-      prm.beats[i].value = 0
+      prm.beat[i].value = 0
     }
     prm.cur = prm.ini
-    let e = prm.beats[prm.cur]
+    let e = prm.beat[prm.cur]
     e.classList.remove('d-none')
     e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
     e.classList.add('d-none')
   }
 
   play_suwari_aux_2() {
-    let e = prm.beats[prm.cur]
+    let e = prm.beat[prm.cur]
     e.classList.add('d-none')
     e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
     e.classList.remove('d-none')
@@ -256,7 +256,7 @@ export default class extends Controller {
   }
 
   play_suwari_aux_3() {
-    let e = prm.beats[prm.ini]
+    let e = prm.beat[prm.ini]
     e.classList.add('d-none')
     e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
     e.classList.remove('d-none')
@@ -272,7 +272,8 @@ export default class extends Controller {
     prm.qs_1 = 1;
     prm.qs_2 = 1;
     prm.qs_3 = 0;
-    prm.beats = qsa('progress.beat');
+    prm.beat = qsa('progress.beat');
+    prm.blen = qsa('progress.beat:not(.d-none)').length;
   }
 
 
@@ -293,25 +294,24 @@ export default class extends Controller {
   //   if (e) this.enfase_aux(e, f)
   // }
 
-  // track_icon(aux) {
-  //   this.tocando = aux
+  track_icon(sts) {
+    prm.sts = sts;
 
-  //   qsa('.play').forEach(e => {
-  //     if ([ 1, 2 ].includes(this.tocando)) {
-  //       e.innerHTML = '<i class="fas fa-stop"></i>'
-  //       e.title = 'parar'
-  //     } else {
-  //       e.innerHTML = '<i class="fas fa-play"></i>'
-  //       e.title = 'tocar'
-  //       clearInterval(prm.id)
-  //     }
-  //   })
+    qsa('.play').forEach(e => {
+      if ([ 1, 2 ].includes(prm.sts)) {
+        e.innerHTML = '<i class="bi bi-stop-fill"></i>';
+        e.title = 'parar';
+      } else {
+        e.innerHTML = '<i class="bi bi-play-fill"></i>';
+        e.title = 'tocar';
+        clearInterval(prm.id);
+      }
+    })
 
-  //   if (prm.cur >= this.t_len) {
-  //     this.reinicio = 1
-  //   }
-
-  // }
+    if (prm.cur >= prm.blen) {
+      prm.flag = 1
+    }
+  }
 
 
   // play_suwari() {
@@ -381,7 +381,7 @@ export default class extends Controller {
 
   //   let delay = 100 * 60 / this.cg('bpm')
   //   prm.id = setInterval(function(fx) {
-  //     let e = prm.beats[prm.cur]
+  //     let e = prm.beat[prm.cur]
   //     if (!e) {
   //       fx.track_icon(3)
   //       return
