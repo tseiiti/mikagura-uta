@@ -38,7 +38,7 @@ export default class extends Controller {
   // html principal do hino
   get_html() {
     clearInterval(prm.id);
-    // this.fill.track_icon(0)
+    this.track_icon(0);
 
     fetch(`/hymns/data?hymn_id=${ config.hymn_id }`)
     .then(response => {
@@ -65,8 +65,8 @@ export default class extends Controller {
   }
 
   // auxiliar de troca de hino pelo menu
-  set_hymn_aux(val) {
-    this.set('hymn_id', val);
+  set_hymn_aux(arg, val) {
+    this.set(arg, val);
     this.get_html();
     this.set_hymn_menu();
   }
@@ -76,7 +76,7 @@ export default class extends Controller {
     let aux = config.hymn_id.substr(5)
     if (aux != 'st') {
       aux = aux == '00' ? 'st' : String(parseInt(aux) - 1).padStart(2, '0');
-      this.set_hymn_aux('hymn_' + aux);
+      this.set_hymn_aux('hymn_id', 'hymn_' + aux);
     }
   }
 
@@ -85,7 +85,7 @@ export default class extends Controller {
     let aux = config.hymn_id.substr(5)
     if (aux != '12') {
       aux = aux == 'st' ? '00' : String(parseInt(aux) + 1).padStart(2, '0');
-      this.set_hymn_aux('hymn_' + aux);
+      this.set_hymn_aux('hymn_id', 'hymn_' + aux);
     }
   }
 
@@ -216,12 +216,12 @@ export default class extends Controller {
       this.get_html(); // reset
       return
     }
-    if (prm.status == 0) {
-      this.start()
-    // } else if (prm.status == 1 || prm.status == 2) {
-    //   this.track_icon(3)
-    // } else {
-    //   this.play()
+    if (prm.sts == 0) {
+      this.start();
+    } else if (prm.sts == 1 || prm.sts == 2) {
+      this.track_icon(3);
+    } else {
+      this.play();
     }
   }
 
@@ -237,62 +237,55 @@ export default class extends Controller {
     
     if (config.animation) es[0].style.color = '#555'
     let i = 1;
-    prm.id = setInterval(function() {
+    prm.id = setInterval(function(fx) {
       if (i == 3) {
         clearInterval(prm.id);
         prm.ini = prm.cur;
-        this.play();
+        fx.play();
         return;
       }
       e = es[i];
       if (config.animation) e.style.color = '#555';
       i += 1;
-    }, 1000 * 60 / config.bpm_time);
+    }, 1000 * 60 / config.bpm_time, this);
   }
 
   play_suwari_aux_1() {
     for (let i = prm.ini; i < prm.cur; i++) {
-      prm.beat[i].value = 0
+      prm.beat[i].value = 0;
     }
-    prm.cur = prm.ini
-    let e = prm.beat[prm.cur]
-    e.classList.remove('d-none')
-    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
-    e.classList.add('d-none')
+    prm.cur = prm.ini;
+    let e = prm.beat[prm.cur];
+    e.classList.remove('d-none');
+    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`);
+    e.classList.add('d-none');
   }
 
   play_suwari_aux_2() {
-    let e = prm.beat[prm.cur]
-    e.classList.add('d-none')
-    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
-    e.classList.remove('d-none')
-    e.querySelectorAll('span').forEach(f => { f.style.color = '#ccc' })
+    let e = prm.beat[prm.cur];
+    e.classList.add('d-none');
+    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`);
+    e.classList.remove('d-none');
+    e.querySelectorAll('span').forEach(f => { f.style.color = '#ccc' });
   }
 
   play_suwari_aux_3() {
-    let e = prm.beat[prm.ini]
-    e.classList.add('d-none')
-    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`)
-    e.classList.remove('d-none')
+    let e = prm.beat[prm.ini];
+    e.classList.add('d-none');
+    e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`);
+    e.classList.remove('d-none');
   }
 
-
-  // enfase_aux(e, f) {
-  //   if (f) {
-  //     e.classList.add('fw-bold')
-  //   } else {
-  //     e.classList.remove('fw-bold')
-  //     // e.classList.add('fw-light')
-  //   }
-  // }
-
-  // enfase(f) {
-  //   if (!config.animation) return
-  //   let e = prm.beat[prm.cur]
-  //   if (!e) return
-  //   e = e.parentElement.querySelector('.texto')
-  //   if (e) this.enfase_aux(e, f)
-  // }
+  enfase(f) {
+    if (!config.animation) return;
+    let e = prm.beat[prm.cur];
+    if (!e) return;
+    e = e.parentElement.querySelector('.part_text');
+    if (e) {
+      if (f) e.classList.add('fw-bold');
+      else e.classList.remove('fw-bold');
+    }
+  }
 
   track_icon(sts) {
     prm.sts = sts;
@@ -306,97 +299,93 @@ export default class extends Controller {
         e.title = 'tocar';
         clearInterval(prm.id);
       }
-    })
+    });
 
     if (prm.cur >= prm.blen) {
-      prm.flag = 1
+      prm.flag = 1;
     }
   }
 
+  play_suwari() {
+    let e = prm.beat[prm.cur];
+    if (prm.qs_0 < this.gs(0) && e.dataset.paragraph == 0) {
+      this.play_suwari_aux_1();
+      prm.qs_0 += 1;
+      qsa('.message p')[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
+      return true
+    }
 
-  // play_suwari() {
-  //   let e = prm.beat[prm.cur]
-  //   if (this.qs_0 < this.gs(0) && e.dataset.paragraph == 0) {
-  //     this.play_suwari_aux_1()
-  //     this.qs_0 += 1
-  //     qsa('.mensagem p')[0].innerText = `${ this.qs_0 } de ${ this.cg('qtd_s')[0] } vezes`
-  //     return true
-  //   }
+    if (prm.qs_1 < this.gs(1) && e.dataset.paragraph == 2) {
+      this.play_suwari_aux_1();
+      prm.qs_1 += 1;
+      qsa('.message p')[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
+      return true;
+    }
 
-  //   if (this.qs_1 < this.gs(1) && e.dataset.paragraph == 2) {
-  //     this.play_suwari_aux_1()
-  //     this.qs_1 += 1
-  //     qsa('.mensagem p')[2].innerText = `${ this.qs_1 } de ${ this.cg('qtd_s')[1] } vezes (de ${ this.qs_2 } de ${ this.cg('qtd_s')[2] })`
-  //     return true
-  //   }
-
-  //   this.qs_3 = 0
-  //   if (this.qs_2 < this.gs(2) && e.dataset.paragraph == 2) {
-  //     this.qs_1 = 1
-  //     this.qs_2 += 1
-  //     this.qs_3 = 1
-  //   }
+    prm.qs_3 = 0;
+    if (prm.qs_2 < this.gs(2) && e.dataset.paragraph == 2) {
+      prm.qs_1 = 1;
+      prm.qs_2 += 1;
+      prm.qs_3 = 1;
+    }
     
-  //   qsa('.mensagem p')[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`
-  //   this.play_suwari_aux_3()
-  //   return false
-  // }
+    qsa('.message p')[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`;
+    this.play_suwari_aux_3();
+    return false;
+  }
 
-  // play_aux() {
-  //   let e = prm.beat[prm.cur]
-  //   if (!e) return
-  //   let lin = qs(`.paragraph_${e.dataset.paragraph} .line_${e.dataset.line}`)
-  //   lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" })
-  //   let es = lin.querySelectorAll('.tempo')
-  //   if (es[es.length - 1] == e) {
-  //     this.enfase(false)
-  //     // this.enfase_aux(qs('.paragraph_0 .line_0 .silaba:last-child .part:last-child .texto'), false)
+  play_aux() {
+    let e = prm.beat[prm.cur];
+    if (!e) return;
+    let lin = qs(`.paragraph_${e.dataset.paragraph} .line_${e.dataset.line}`);
+    lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
+    let es = lin.querySelectorAll('.beat');
+    if (es[es.length - 1] == e) {
+      this.enfase(false);
 
-  //     if (lin.classList.contains('parar')) {
-  //       if (this.cg('id') == 's' && this.play_suwari()) return
-  //       this.track_icon(0)
-  //       prm.cur += 1
-  //     }
-  //   }
-  //   this.enfase(true)
-  // }
+      if (lin.classList.contains('stop')) {
+        if (config.hymn_id == 'hymn_st' && this.play_suwari()) return;
+        this.track_icon(0);
+        prm.cur += 1;
+      }
+    }
+    this.enfase(true);
+  }
 
-  // play() {
-  //   this.track_icon(2)
+  play() {
+    this.track_icon(2);
 
-  //   let e = prm.beat[prm.cur]
-  //   qsa(`.first-span.paragraph_${e.dataset.paragraph}.line_${e.dataset.line} span`)
-  //     .forEach(f => { if (config.animation) f.style.color = '#555' })
+    let e = prm.beat[prm.cur];
+    qsa(`.first-span.paragraph_${e.dataset.paragraph}.line_${e.dataset.line} span`)
+      .forEach(f => { if (config.animation) f.style.color = '#555' });
 
-  //   if (this.cg('id') == 's') {
-  //     let es = qsa('.mensagem p')
-  //     es[0].innerText = `${ this.qs_0 } de ${ this.cg('qtd_s')[0] } vezes`
-  //     es[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`
-  //     if (e.dataset.paragraph == 2)
-  //       es[2].innerText = `${ this.qs_1 } de ${ this.cg('qtd_s')[1] } vezes (de ${ this.qs_2 } de ${ this.cg('qtd_s')[2] })`
-  //   }
+    if (config.hymn_id == 'hymn_st') {
+      let es = qsa('.message p');
+      es[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
+      es[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`;
+      if (e.dataset.paragraph == 2)
+        es[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
+    }
 
-  //   if (e.classList.contains('d-none')) prm.cur += 1
-  //   this.enfase(true)
+    if (e.classList.contains('d-none')) prm.cur += 1;
+    this.enfase(true);
 
-  //   let delay = 100 * 60 / config.bpm_time
-  //   prm.id = setInterval(function(fx) {
-  //     let e = prm.beat[prm.cur]
-  //     if (!e) {
-  //       fx.track_icon(3)
-  //       return
-  //     }
-  //     if (config.animation) e.value = fx.valor
-
-  //     fx.valor += 1
-  //     if (fx.valor > 5) {
-  //       fx.enfase(false)
-  //       fx.valor = 1
-  //       prm.cur += 1
-
-  //       fx.play_aux()
-  //     }
-  //   }, delay, this);
-  // }
-
+    let i = 1;
+    let delay = 100 * 60 / config.bpm_time;
+    prm.id = setInterval(function(fx) {
+      let e = prm.beat[prm.cur];
+      if (!e) {
+        fx.track_icon(3);
+        return;
+      }
+      if (config.animation) e.value = i;
+      i += 1;
+      if (i > 5) {
+        fx.enfase(false)
+        i = 1;
+        prm.cur += 1;
+        fx.play_aux();
+      }
+    }, delay, this);
+  }
 }

@@ -17,7 +17,7 @@ module HymnsHelper
         html = tag.span class: "text-capitalize", style: "margin-right: 8px; font-size: 20px;" do
           " " + title
         end
-        html += tag.a class: "nav-link d-inline me-1 play", href: "javascript:conf.fill.track()", title: "tocar" do
+        html += tag.a class: "nav-link d-inline me-1 play", title: "tocar", data: { action: "click->hymn#track" }  do
           tag.i class: "bi bi-play-fill"
         end
         html += tag.a class: "nav-link d-inline me-1", title: "próximo hino", data: { action: "click->hymn#next" } do
