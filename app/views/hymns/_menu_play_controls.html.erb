@@ -5,13 +5,12 @@
   <a class="nav-link d-inline-block px-1 pb-2 pb-md-0 play" href="javascript:conf.fill.track()" title="tocar">
     <i class="bi bi-play-fill"></i>
   </a>
-  <a class="nav-link d-inline-block px-1 pb-2 pb-md-0" href="javascript:conf.fill.previous()" title="hino anterior">
+  <a class="nav-link d-inline-block px-1 pb-2 pb-md-0" title="hino anterior" 
+      data-action="click->hymn#previous">
     <i class="bi bi-arrow-left-circle-fill"></i>
   </a>
-  <a class="nav-link d-inline-block px-1 pb-2 pb-md-0" data-action="click->hymn#greet" title="hino anterior">
-    <i class="bi bi-arrow-left-circle-fill"></i>
-  </a>
-  <a class="nav-link d-inline-block px-1 pb-2 pb-md-0" href="javascript:conf.fill.next()" title="próximo hino">
+  <a class="nav-link d-inline-block px-1 pb-2 pb-md-0" title="próximo hino" 
+      data-action="click->hymn#next">
     <i class="bi bi-arrow-right-circle-fill"></i>
   </a>
 </li>

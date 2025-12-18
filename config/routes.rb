@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "pages#home"
 
-  resources :hymns, only: [ :index, :show ] do
+  resources :hymns, only: [ :index ] do
     collection do
       get :data
     end

@@ -20,7 +20,7 @@ module HymnsHelper
         html += tag.a class: "nav-link d-inline me-1 play", href: "javascript:conf.fill.track()", title: "tocar" do
           tag.i class: "bi bi-play-fill"
         end
-        html += tag.a class: "nav-link d-inline me-1", href: "javascript:conf.fill.next()", title: "próximo hino" do
+        html += tag.a class: "nav-link d-inline me-1", title: "próximo hino", data: { action: "click->hymn#next" } do
           tag.i class: "bi bi-arrow-right-circle-fill"
         end
         html.html_safe
