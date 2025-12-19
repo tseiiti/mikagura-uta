@@ -92,7 +92,7 @@ h1 {
   visibility: visible;
 }
 
-/* .stop .part_text:after {
+/* .last .part_text:after {
   width: 0;
 }
 .syllable:last-child .part_2 .part_text:after {
@@ -218,7 +218,7 @@ progress::-webkit-progress-value { background: #888; }
   width: 0;
 }
 
-.stop progress {
+.last progress {
   width: 0;
 } */
 

@@ -49,6 +49,7 @@ module HymnsHelper
     phrase = (line[:phrase] || "").gsub(/\s+/, "")
     tag.div class: "line line_#{ j } #{ 'pause' if line[:pause] }" do
       html = first_syllable(i, j, line)
+      @first = true if line[:pause]
 
       i1 = 0
       i2 = 0
@@ -56,14 +57,14 @@ module HymnsHelper
         phrase, text = syllable_text(phrase)
         return if text.blank?
 
-        stop = line[:stop] == i1
+        last = line[:last] == i1
         attrs = [
           [
-            "part_#{ line[:inverse] ? '2' : '1' } #{ 'stop' if stop }".strip,
-            stop ? nil : "beat beat_#{ i2 + 1 }",
+            "part_#{ line[:inverse] ? '2' : '1' } #{ 'last' if last }".strip,
+            last ? nil : "beat beat_#{ i2 + 1 }",
             { paragraph: i, line: j, syllable: i2 / 2, part: 1 }
           ], [
-            "part_#{ line[:inverse] ? '1' : '2' } #{ 'd-none' if stop }".strip,
+            "part_#{ line[:inverse] ? '1' : '2' } #{ 'd-none' if last }".strip,
             "beat beat_#{ i2 + 2 }", # remover beat da última parte da ultima silaba!!!
             { paragraph: i, line: j, syllable: i2 / 2, part: 2 }
           ]
@@ -132,7 +133,7 @@ module HymnsHelper
 
       if @first
         html += first_span(j, i)
-        @first = line[:pause]
+        @first = false
       end
 
       html.html_safe

@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
+const c  = (arg) => { console.log(arg); }
 const qs  = (arg) => { return document.querySelector(arg); }
 const qsa = (arg) => { return document.querySelectorAll(arg); }
 const config = {};
@@ -52,7 +53,7 @@ export default class extends Controller {
         let val = config.instruments[key];
         this.instrument_icon(key, val);
       }
-      
+
       this.start_prm();
     })
     .catch(error => { console.error('Erro:', error); });
@@ -193,22 +194,37 @@ export default class extends Controller {
     return val;
   }
 
-  /*
+  /****************************************************************************
    * play fill
-   */
+   ***************************************************************************/
 
   start_prm() {
     prm.id   = 0; // id do interval
-    prm.ini  = 0; // id do tempo (beat) inicial
-    prm.cur  = 0; // id do tempo (beat) atual
-    prm.sts  = 0; // 0: inicio, 1: iniciando (3 tempos), 2: tocando, 3: parado
-    prm.flag = 0;
+    prm.ini  = 0; // id de beat inicial
+    prm.cur  = 0; // id de beat atual
+    prm.sts  = 0; // status
+    prm.flag = 0; // flag para reinicio
     prm.qs_0 = 1;
     prm.qs_1 = 1;
     prm.qs_2 = 1;
     prm.qs_3 = 0;
     prm.beat = qsa('progress.beat');
     prm.blen = qsa('progress.beat:not(.d-none)').length;
+    
+    if (config.hymn_id == 'hymn_st') {
+      let es = qsa('.message p')
+      es[0].innerText = `0 de ${ config.suwari_0 } vezes`
+      es[1].innerText = `0 de 1 vez`
+      es[2].innerText = `0 de ${ config.suwari_1 } vezes ( de 0 de ${ config.suwari_2 } )`
+    }
+
+    // if (config.hymn_id == 'hymn_st') {
+    //   let es = qsa('.message p');
+    //   es[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
+    //   es[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`;
+    //   if (e.dataset.paragraph == 2)
+    //     es[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
+    // }
   }
 
   track() {
@@ -250,6 +266,64 @@ export default class extends Controller {
     }, 1000 * 60 / config.bpm_time, this);
   }
 
+  play() {
+    this.track_icon(2);
+
+    let e = prm.beat[prm.cur];
+    qsa(`.first-span.paragraph_${e.dataset.paragraph}.line_${e.dataset.line} span`)
+      .forEach(f => { if (config.animation) f.style.color = '#555' });
+
+    this.suwari_message(e);
+
+    if (e.classList.contains('d-none')) prm.cur += 1;
+    this.enfase(true);
+
+    let i = 1;
+    prm.id = setInterval(function(fx) {
+      let e = prm.beat[prm.cur];
+      if (!e) {
+        fx.track_icon(3);
+        return;
+      }
+      if (config.animation) e.value = i;
+      i += 1;
+      if (i > 5) {
+        fx.enfase(false)
+        i = 1;
+        prm.cur += 1;
+        fx.play_aux();
+      }
+    }, 100 * 60 / config.bpm_time, this);
+  }
+
+  play_suwari() {c(0)
+    let e = prm.beat[prm.cur];
+    if (prm.qs_0 < config.suwari_0 && e.dataset.paragraph == 0) {
+      this.play_suwari_aux_1();
+      prm.qs_0 += 1;
+      qsa('.message p')[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
+      return true
+    }
+
+    if (prm.qs_1 < config.suwari_1 && e.dataset.paragraph == 2) {
+      this.play_suwari_aux_1();
+      prm.qs_1 += 1;
+      qsa('.message p')[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
+      return true;
+    }
+
+    prm.qs_3 = 0;
+    if (prm.qs_2 < config.suwari_2 && e.dataset.paragraph == 2) {
+      prm.qs_1 = 1;
+      prm.qs_2 += 1;
+      prm.qs_3 = 1;
+    }
+    
+    qsa('.message p')[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`;
+    this.play_suwari_aux_3();
+    return false;
+  }
+
   play_suwari_aux_1() {
     for (let i = prm.ini; i < prm.cur; i++) {
       prm.beat[i].value = 0;
@@ -288,6 +362,7 @@ export default class extends Controller {
   }
 
   track_icon(sts) {
+    // 0: inicio, 1: iniciando (3 tempos), 2: tocando, 3: parado
     prm.sts = sts;
 
     qsa('.play').forEach(e => {
@@ -306,34 +381,6 @@ export default class extends Controller {
     }
   }
 
-  play_suwari() {
-    let e = prm.beat[prm.cur];
-    if (prm.qs_0 < this.gs(0) && e.dataset.paragraph == 0) {
-      this.play_suwari_aux_1();
-      prm.qs_0 += 1;
-      qsa('.message p')[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
-      return true
-    }
-
-    if (prm.qs_1 < this.gs(1) && e.dataset.paragraph == 2) {
-      this.play_suwari_aux_1();
-      prm.qs_1 += 1;
-      qsa('.message p')[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
-      return true;
-    }
-
-    prm.qs_3 = 0;
-    if (prm.qs_2 < this.gs(2) && e.dataset.paragraph == 2) {
-      prm.qs_1 = 1;
-      prm.qs_2 += 1;
-      prm.qs_3 = 1;
-    }
-    
-    qsa('.message p')[1].innerText = `${ e.dataset.paragraph >= 1 ? 1 : 0 } de 1 vez`;
-    this.play_suwari_aux_3();
-    return false;
-  }
-
   play_aux() {
     let e = prm.beat[prm.cur];
     if (!e) return;
@@ -343,7 +390,7 @@ export default class extends Controller {
     if (es[es.length - 1] == e) {
       this.enfase(false);
 
-      if (lin.classList.contains('stop')) {
+      if (lin.classList.contains('pause')) {
         if (config.hymn_id == 'hymn_st' && this.play_suwari()) return;
         this.track_icon(0);
         prm.cur += 1;
@@ -352,13 +399,7 @@ export default class extends Controller {
     this.enfase(true);
   }
 
-  play() {
-    this.track_icon(2);
-
-    let e = prm.beat[prm.cur];
-    qsa(`.first-span.paragraph_${e.dataset.paragraph}.line_${e.dataset.line} span`)
-      .forEach(f => { if (config.animation) f.style.color = '#555' });
-
+  suwari_message(e) {
     if (config.hymn_id == 'hymn_st') {
       let es = qsa('.message p');
       es[0].innerText = `${ prm.qs_0 } de ${ config.suwari_0 } vezes`;
@@ -366,26 +407,5 @@ export default class extends Controller {
       if (e.dataset.paragraph == 2)
         es[2].innerText = `${ prm.qs_1 } de ${ config.suwari_1 } vezes (de ${ prm.qs_2 } de ${ config.suwari_2 })`;
     }
-
-    if (e.classList.contains('d-none')) prm.cur += 1;
-    this.enfase(true);
-
-    let i = 1;
-    let delay = 100 * 60 / config.bpm_time;
-    prm.id = setInterval(function(fx) {
-      let e = prm.beat[prm.cur];
-      if (!e) {
-        fx.track_icon(3);
-        return;
-      }
-      if (config.animation) e.value = i;
-      i += 1;
-      if (i > 5) {
-        fx.enfase(false)
-        i = 1;
-        prm.cur += 1;
-        fx.play_aux();
-      }
-    }, delay, this);
   }
 }
