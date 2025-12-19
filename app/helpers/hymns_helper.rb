@@ -40,6 +40,8 @@ module HymnsHelper
             end
           end
         end
+        html += tag.span @j1, class: "mx-3"
+        html += tag.span @j2, class: "mx-3"
       end
       html.html_safe
     end
@@ -50,14 +52,15 @@ module HymnsHelper
     tag.div class: "line line_#{ j } #{ 'pause' if line[:pause] }" do
       html = first_syllable(i, j, line)
       @first = true if line[:pause]
-
+      # puts line[:last]
       i1 = 0
       i2 = 0
       while phrase.size > 0
         phrase, text = syllable_text(phrase)
         return if text.blank?
 
-        last = line[:last] == i1
+        # last = line[:last] == i1
+        last = false
         attrs = [
           [
             "part_#{ line[:inverse] ? '2' : '1' } #{ 'last' if last }".strip,
@@ -65,7 +68,7 @@ module HymnsHelper
             { paragraph: i, line: j, syllable: i2 / 2, part: 1 }
           ], [
             "part_#{ line[:inverse] ? '1' : '2' } #{ 'd-none' if last }".strip,
-            "beat beat_#{ i2 + 2 }", # remover beat da última parte da ultima silaba!!!
+            "beat beat_#{ i2 + 2 }",
             { paragraph: i, line: j, syllable: i2 / 2, part: 2 }
           ]
         ]
@@ -84,6 +87,11 @@ module HymnsHelper
           html.html_safe
         end
       end
+      @j1 = i1
+      @j2 = i2
+      # html += tag.span i1
+      # html += tag.span " - "
+      # html += tag.span i2
       html.html_safe
     end
   end

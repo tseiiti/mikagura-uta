@@ -251,8 +251,8 @@ export default class extends Controller {
   // 3 tempos iniciais
   start() {
     if (prm.fsw) {
-      this.play_suwari_aux_1();
-      this.play_suwari_aux_2();
+      this.play_suwari_restore();
+      this.play_suwari_start();
     }
     this.track_icon(1);
 
@@ -289,14 +289,14 @@ export default class extends Controller {
     this.suwari_message();
     
     let i = 0;
-    this.enfase(true);
+    this.emphasis(true);
     prm.id = setInterval(function(fx) {
       i += 1;
       if (config.animation) prm.b.value = i;
 
       if (i == 5) {
         i = 0;
-        fx.enfase(false)
+        fx.emphasis(false)
         fx.play_aux();
       }
     }, 100 * 60 / config.bpm_time, this);
@@ -322,7 +322,7 @@ export default class extends Controller {
         this.bp();
       }
     }
-    this.enfase(true);
+    this.emphasis(true);
   }
 
   // mensagens do suwari
@@ -344,11 +344,11 @@ export default class extends Controller {
 
     let boolean = false;
     if (prm.qs_0 < config.suwari_0 && prm.p == 0) {
-      this.play_suwari_aux_1();
+      this.play_suwari_restore();
       prm.qs_0 += 1;
       boolean = true;
     } else if (prm.qs_1 < config.suwari_1 && prm.p == 2) {
-      this.play_suwari_aux_1();
+      this.play_suwari_restore();
       prm.qs_1 += 1;
       boolean = true;
     } else {
@@ -358,13 +358,14 @@ export default class extends Controller {
         prm.qs_2 += 1;
         prm.fsw   = true;
       }
-      this.play_suwari_aux_3();
+      this.play_suwari_final();
     }
     this.suwari_message();
     return boolean;
   }
 
-  play_suwari_aux_1() {
+  // restaura value do parágrafo e troca 3 pontos por beat
+  play_suwari_restore() {
     for (let i = prm.ini; i < prm.cur; i++) {
       prm.beat[i].value = 0;
     }
@@ -375,21 +376,23 @@ export default class extends Controller {
     e.classList.add('d-none');
   }
 
-  play_suwari_aux_2() {
+  // volta 3 pontos do parágrafo
+  play_suwari_start() {
     prm.b.classList.add('d-none');
     let e = qs(`.first-span.paragraph_${ prm.p }.line_${ prm.l }`);
     e.classList.remove('d-none');
     e.querySelectorAll('span').forEach(f => { f.style.color = '#ccc' });
   }
 
-  play_suwari_aux_3() {
+  // volta 3 pontos inicial terminado
+  play_suwari_final() {
     let e = prm.beat[prm.ini];
     e.classList.add('d-none');
     e = qs(`.first-span.paragraph_${ e.dataset.paragraph }.line_${ e.dataset.line }`);
     e.classList.remove('d-none');
   }
 
-  enfase(f) {
+  emphasis(f) {
     if (!config.animation) return;
     let e = prm.b;
     if (!e) return;

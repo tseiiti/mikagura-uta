@@ -28,14 +28,15 @@ class Uta
     paragraphs: [
       [ {
         phrase: "ashiki o haro(o)te tasuke tamae",
-        halfs: [ 1, 3, 5, 7, 10, 13 ],
         hyoshigi: "1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 22",
         taiko: "1   1       1",
         kotsuzumi: "  12   4    12",
         fue: "2  00  35  30 27",
-        koto: "4  44  32  33 45"
+        koto: "4  44  32  33 45",
+        halfs: [ 1, 3, 5, 7, 10, 13 ],
+        lastx: 13
       }, {
         phrase: "tenri ō no mikoto _",
         halfs: [ 1 ],
@@ -81,7 +82,7 @@ class Uta
       }, {
         phrase: "fufu okoshiraekitarudena",
         halfs: [ 2, 4, 6, 8, 10 ],
-        last: 11,
+        lastx: 11,
         hyoshigi: "2   1   1   1",
         chanpon: "2 1   1   1",
         surigane: "3 221 221 221",
@@ -90,10 +91,10 @@ class Uta
         fue: "72 0 3 2 3 20",
         koto: "54 4 3 4 3 44"
       }, {
-        phrase: "korewa konoyono hajimedashi __",
+        phrase: "korewa konoyono hajimedashi _",
         halfs: [ 1, 3, 5, 7, 9, 11 ],
         inverse: 1,
-        last: 13,
+        lastx: 13,
         hyoshigi: "   1   1   1",
         chanpon: " 1   1   1   1",
         surigane: " 221 221 221 22",
@@ -104,7 +105,7 @@ class Uta
       }, {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         pause: true,
         message: "1 vez",
         hyoshigi: "1   1   1   1   1",
@@ -295,7 +296,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         message: "yoshi yoshi",
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
@@ -435,7 +436,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -573,7 +574,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -795,7 +796,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -1016,7 +1017,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -1234,7 +1235,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -1456,7 +1457,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -1693,7 +1694,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -1910,7 +1911,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -2123,7 +2124,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -2342,7 +2343,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -2566,7 +2567,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",
@@ -2784,7 +2785,7 @@ class Uta
       } ], [ {
         phrase: "namu tenri ō no mikoto",
         halfs: [ 3 ],
-        last: 9,
+        lastx: 9,
         hyoshigi: "1   1   1   1   1",
         chanpon: "  1   1   1   1",
         surigane: "1 221 221 221 221",

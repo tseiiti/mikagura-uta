@@ -4,17 +4,13 @@
 <%# console %>
 <script>
 const c  = (arg) => { console.log(arg); }
-
 const qs  = (arg) => { return document.querySelector(arg); }
-
 const qsa = (arg) => { return document.querySelectorAll(arg); }
-
 const set_cookie = (key, val) => {
   let d = new Date()
   d.setTime(d.getTime() + 365 * 24 * 60 * 60 * 1000)
   document.cookie = `${key}=${val};expires=${d.toUTCString()};path=/;samesite=lax;`
 }
-
 const get_cookie = (key) => {
   key = key + "="
   let val = ""
@@ -26,6 +22,10 @@ const get_cookie = (key) => {
   })
   return val
 }
-
-var x = -1;
 </script>
+
+<style>
+.syllable:last-child .part:last-child .part_text:after {
+  width: 0;
+}
+</style>

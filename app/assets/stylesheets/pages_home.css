@@ -92,10 +92,11 @@ h1 {
   visibility: visible;
 }
 
+
 /* .last .part_text:after {
   width: 0;
 }
-.syllable:last-child .part_2 .part_text:after {
+.syllable:last-child .part:last-child .part_text:after {
   width: 0;
 } */
 
