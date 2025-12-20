@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-const c  = (arg) => { console.log(arg); }
+const c   = (arg) => { console.log(arg); }
 const qs  = (arg) => { return document.querySelector(arg); }
 const qsa = (arg) => { return document.querySelectorAll(arg); }
 const config = {};
@@ -304,25 +304,26 @@ export default class extends Controller {
 
   // execução de cada beat
   play_aux() {
+
+    let lin = qs(`.paragraph_${ prm.p } .line_${ prm.l }`);
+    lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
+    let es = lin.querySelectorAll('.beat');
+    if (es[es.length - 1] == prm.b) {
+      // pausa para início de 3 tempos
+      if (lin.classList.contains('pause')) {c(0)
+        if (this.play_suwari()) return;
+        this.track_icon(0);
+      }
+    }
+
     // término
     this.bp();
     if (!prm.b) {
       this.track_icon(3);
       return;
     }
-    
-    let lin = qs(`.paragraph_${ prm.p } .line_${ prm.l }`);
-    lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
-    let es = lin.querySelectorAll('.beat');
-    if (es[es.length - 1] == prm.b) {
-      // pausa para início de 3 tempos
-      if (lin.classList.contains('pause')) {
-        if (this.play_suwari()) return;
-        this.track_icon(0);
-        this.bp();
-      }
-    }
     this.emphasis(true);
+    
   }
 
   // mensagens do suwari
@@ -366,7 +367,7 @@ export default class extends Controller {
 
   // restaura value do parágrafo e troca 3 pontos por beat
   play_suwari_restore() {
-    for (let i = prm.ini; i < prm.cur; i++) {
+    for (let i = prm.ini; i <= prm.cur; i++) {
       prm.beat[i].value = 0;
     }
     prm.cur = prm.ini;

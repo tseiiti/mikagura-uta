@@ -40,8 +40,8 @@ module HymnsHelper
             end
           end
         end
-        html += tag.span @j1, class: "mx-3"
-        html += tag.span @j2, class: "mx-3"
+        # html += tag.span @j1, class: "mx-3"
+        # html += tag.span @j2, class: "mx-3"
       end
       html.html_safe
     end
@@ -72,8 +72,8 @@ module HymnsHelper
           html.html_safe
         end
       end
-      @j1 = i1
-      @j2 = i2
+      # @j1 = i1
+      # @j2 = i2
       html.html_safe
     end
   end
@@ -99,7 +99,7 @@ module HymnsHelper
     text = "i" if text == "xi"
     text = "o" if text == "xo"
     c = "part part_#{ (p == 1 && !v) || (p == 2 && v) ? '1' : '2' }"
-    d = { paragraph: i, l: j, syllable: q / 2, part: p }
+    d = { paragraph: i, line: j, syllable: q / 2, part: p }
     tag.span class: c do
       html  = ""
       html += tag.progress class: "beat beat_#{ p + q }", data: d, value: 0, max: 5 if l[:size] > p + q
