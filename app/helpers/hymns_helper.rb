@@ -52,36 +52,21 @@ module HymnsHelper
     tag.div class: "line line_#{ j } #{ 'pause' if line[:pause] }" do
       html = first_syllable(i, j, line)
       @first = true if line[:pause]
-      # puts line[:last]
       i1 = 0
       i2 = 0
       while phrase.size > 0
         phrase, text = syllable_text(phrase)
         return if text.blank?
 
-        # last = line[:last] == i1
-        last = false
-        attrs = [
-          [
-            "part_#{ line[:inverse] ? '2' : '1' } #{ 'last' if last }".strip,
-            last ? nil : "beat beat_#{ i2 + 1 }",
-            { paragraph: i, line: j, syllable: i2 / 2, part: 1 }
-          ], [
-            "part_#{ line[:inverse] ? '1' : '2' } #{ 'd-none' if last }".strip,
-            "beat beat_#{ i2 + 2 }",
-            { paragraph: i, line: j, syllable: i2 / 2, part: 2 }
-          ]
-        ]
-
         html += tag.div class: "syllable syllable_#{ i2 / 2 }" do
-          html = syllable_part(text, attrs[0], narimono(line, i2))
+          html = syllable_part(text, line, i, j, 1, i2, line[:inverse])
           if line[:halfs]&.include? i1 + 1
             phrase, text = syllable_text(phrase)
-            html += syllable_part(text, attrs[1], narimono(line, i2 + 1))
             i1 += 1
           else
-            html += syllable_part("", attrs[1], narimono(line, i2 + 1))
+            text = ""
           end
+          html += syllable_part(text, line, i, j, 2, i2, line[:inverse])
           i1 += 1
           i2 += 2
           html.html_safe
@@ -89,9 +74,6 @@ module HymnsHelper
       end
       @j1 = i1
       @j2 = i2
-      # html += tag.span i1
-      # html += tag.span " - "
-      # html += tag.span i2
       html.html_safe
     end
   end
@@ -109,14 +91,21 @@ module HymnsHelper
     html.html_safe
   end
 
-  def syllable_part(text, attrs, narimono)
+  # def syllable_part(text, attrs, narimono)
+  def syllable_part(text, l, i, j, p, q, v)
+    return "" if l[:size] < p + q
+
     text = ""  if text == "_"
     text = "i" if text == "xi"
     text = "o" if text == "xo"
-    tag.span class: "part #{ attrs[0] }" do
-      html  = tag.progress class: attrs[1], data: attrs[2], value: 0, max: 5
+    c = "part part_#{ (p == 1 && !v) || (p == 2 && v) ? '1' : '2' }"
+    d = { paragraph: i, l: j, syllable: q / 2, part: p }
+    tag.span class: c do
+      html  = ""
+      html += tag.progress class: "beat beat_#{ p + q }", data: d, value: 0, max: 5 if l[:size] > p + q
       html += tag.div text, class: "part_text"
-      html += narimono
+      html += narimono(l, q + p)
+      html.html_safe
     end
   end
 
