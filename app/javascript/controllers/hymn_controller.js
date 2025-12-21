@@ -55,6 +55,12 @@ export default class extends Controller {
       }
 
       this.start_prm();
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
     })
     .catch(error => { console.error('Erro:', error); });
   }
@@ -211,7 +217,6 @@ export default class extends Controller {
     prm.fsw  = false; // flag suwari término
     prm.beat = qsa('progress.beat'); // todos os beats
     prm.blen = qsa('progress.beat:not(.d-none)').length;
-    this.bd();
     
     if (config.hymn_id == 'hymn_st') {
       this.suwari_message();
@@ -251,6 +256,7 @@ export default class extends Controller {
 
   // 3 tempos iniciais
   start() {
+    this.bd();
     if (prm.fsw) {
       this.play_suwari_restore();
       this.play_suwari_start();
@@ -279,6 +285,7 @@ export default class extends Controller {
   // tocar
   play() {
     this.track_icon(2);
+    this.bd();
 
     // marca 3 pontos iniciais
     qsa(`.first-span.paragraph_${ prm.p }.line_${ prm.l } span`)

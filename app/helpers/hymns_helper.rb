@@ -40,8 +40,6 @@ module HymnsHelper
             end
           end
         end
-        # html += tag.span @j1, class: "mx-3"
-        # html += tag.span @j2, class: "mx-3"
       end
       html.html_safe
     end
@@ -72,8 +70,6 @@ module HymnsHelper
           html.html_safe
         end
       end
-      # @j1 = i1
-      # @j2 = i2
       html.html_safe
     end
   end
@@ -91,7 +87,6 @@ module HymnsHelper
     html.html_safe
   end
 
-  # def syllable_part(text, attrs, narimono)
   def syllable_part(text, l, i, j, p, q, v)
     return "" if l[:size] < p + q
 
