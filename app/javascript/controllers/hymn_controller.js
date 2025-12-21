@@ -3,6 +3,23 @@ import { Controller } from "@hotwired/stimulus"
 const c   = (arg) => { console.log(arg); }
 const qs  = (arg) => { return document.querySelector(arg); }
 const qsa = (arg) => { return document.querySelectorAll(arg); }
+const set_cookie = (key, val) => {
+  let d = new Date();
+  d.setTime(d.getTime() + 20 * 365 * 24 * 60 * 60 * 1000);
+  document.cookie = `${key}=${val};expires=${d.toUTCString()};path=/;samesite=lax;`;
+}
+const get_cookie = (key) => {
+  key = key + "=";
+  let val = "";
+  document.cookie.split("; ").forEach(e => {
+    if (e.indexOf(key) === 0) {
+      val = e.substring(key.length, e.length);
+      return;
+    }
+  })
+  return val;
+}
+
 const config = {};
 const prm = {};
 
@@ -10,7 +27,7 @@ const prm = {};
 export default class extends Controller {
   connect() {
     if (this.element.localName == 'main') {
-      let aux = JSON.parse(this.get_cookie('config') || '{}');
+      let aux = JSON.parse(get_cookie('config') || '{}');
       config.hymn_id     = aux.hymn_id || 'hymn_00';
       config.font_size   = aux.font_size || 16;
       config.space_width = aux.space_width || 1.3;
@@ -18,6 +35,7 @@ export default class extends Controller {
       config.suwari_0    = aux.suwari_0 || 21;
       config.suwari_1    = aux.suwari_1 || 3;
       config.suwari_2    = aux.suwari_2 || 3;
+      config.scroll      = !(aux.scroll == false);
       config.animation   = !(aux.animation == false);
       config.instruments = aux.instruments || {};
 
@@ -29,6 +47,7 @@ export default class extends Controller {
       qs('.suwari_0').value = config.suwari_0;
       qs('.suwari_1').value = config.suwari_1;
       qs('.suwari_2').value = config.suwari_2;
+      qs('.scroll').checked = config.scroll;
       qs('.animation').checked = config.animation;
 
       this.set_hymn_menu();
@@ -56,11 +75,8 @@ export default class extends Controller {
 
       this.start_prm();
 
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
+      if (config.scroll)
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     })
     .catch(error => { console.error('Erro:', error); });
   }
@@ -167,7 +183,7 @@ export default class extends Controller {
   // salvar ajuste e propriedade
   set(key, val) {
     config[key] = val;
-    this.set_cookie('config', JSON.stringify(config));
+    set_cookie('config', JSON.stringify(config));
 
     if ([ 'font_size', 'space_width' ].includes(key)) {
       let root = document.documentElement;
@@ -180,24 +196,6 @@ export default class extends Controller {
       }
       qs(`.${ key }`).innerText = val;
     }
-  }
-
-  set_cookie(key, val) {
-    let d = new Date();
-    d.setTime(d.getTime() + 20 * 365 * 24 * 60 * 60 * 1000);
-    document.cookie = `${key}=${val};expires=${d.toUTCString()};path=/;samesite=lax;`;
-  }
-
-  get_cookie(key) {
-    key = key + "=";
-    let val = "";
-    document.cookie.split("; ").forEach(e => {
-      if (e.indexOf(key) === 0) {
-        val = e.substring(key.length, e.length);
-        return;
-      }
-    })
-    return val;
   }
 
   /****************************************************************************
@@ -265,7 +263,8 @@ export default class extends Controller {
 
     // scroll na linha
     let es = qsa(`.first-span.paragraph_${ prm.p }.line_${ prm.l } span`);
-    es[0].scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
+    if (config.scroll)
+      es[0].scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
     
     // troca cor do ponto no tempo
     let i = 0;
@@ -313,13 +312,13 @@ export default class extends Controller {
   // execução de cada beat
   play_aux() {
     let lin = qs(`.paragraph_${ prm.p } .line_${ prm.l }`);
-    lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
+    if (config.scroll)
+      lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
     let es = lin.querySelectorAll('.beat');
     if (es[es.length - 1] == prm.b) {
       // pausa para início de 3 tempos
       if (lin.classList.contains('pause')) {
         if (this.play_suwari()) return;
-        x = prm
         this.track_icon(0);
       }
     }
