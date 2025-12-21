@@ -104,7 +104,7 @@ module HymnsHelper
       html  = ""
       html += tag.progress class: "beat beat_#{ p + q }", data: d, value: 0, max: 5 if l[:size] > p + q
       html += tag.div text, class: "part_text"
-      html += narimono(l, q + p)
+      html += narimono(l, q + p - 1)
       html.html_safe
     end
   end

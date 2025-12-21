@@ -202,7 +202,7 @@ export default class extends Controller {
     prm.id   = 0; // id do interval
     prm.ini  = 0; // id de beat inicial
     prm.cur  = 0; // id de beat atual
-    // prm.cur  = 143; // id de beat atual
+    // prm.cur  = 134; // id de beat atual
     prm.sts  = 0; // status
     prm.flag = false; // flag para reinicio
     prm.qs_0 = 0;
@@ -235,10 +235,11 @@ export default class extends Controller {
 
   // controle geral de execução
   track() {
-    if (prm.flag && !prm.fsw) {
+    if (prm.cur >= prm.blen && !prm.b && !prm.fsw) {
       this.get_html(); // reset
       return
     }
+
     if (prm.sts == 0) {
       this.start();
     } else if (prm.sts == 1 || prm.sts == 2) {
@@ -304,14 +305,14 @@ export default class extends Controller {
 
   // execução de cada beat
   play_aux() {
-
     let lin = qs(`.paragraph_${ prm.p } .line_${ prm.l }`);
     lin.scrollIntoView({ behavior: "smooth", block: 'center', inline: "nearest" });
     let es = lin.querySelectorAll('.beat');
     if (es[es.length - 1] == prm.b) {
       // pausa para início de 3 tempos
-      if (lin.classList.contains('pause')) {c(0)
+      if (lin.classList.contains('pause')) {
         if (this.play_suwari()) return;
+        x = prm
         this.track_icon(0);
       }
     }
@@ -357,6 +358,7 @@ export default class extends Controller {
       if (prm.qs_2 < config.suwari_2 && prm.p == 2) {
         prm.qs_1  = 1;
         prm.qs_2 += 1;
+        prm.cur  -= 1;
         prm.fsw   = true;
       }
       this.play_suwari_final();
@@ -419,9 +421,5 @@ export default class extends Controller {
         clearInterval(prm.id);
       }
     });
-
-    if (prm.cur >= prm.blen) {
-      prm.flag = true;
-    }
   }
 }
