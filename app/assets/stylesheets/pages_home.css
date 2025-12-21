@@ -95,10 +95,10 @@ h1 {
 
 /* .last .part_text:after {
   width: 0;
-}
+} */
 .syllable:last-child .part:last-child .part_text:after {
   width: 0;
-} */
+}
 
 /* Ícone */
 .icone {
@@ -116,11 +116,11 @@ h1 {
   background-position: center center;
 }
 
-.estica {
+.stretch {
   width: var(--size);
   height: var(--size);
 }
-.estica::before {
+.stretch::before {
   width: var(--size);
   height: var(--size);
   background-size: var(--size) var(--size);
